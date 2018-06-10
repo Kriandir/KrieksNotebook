@@ -23,7 +23,7 @@ class datawrapp(object):
         self.ifluxe = ifluxe
         self.keys = ['radec','ra','rae','dec','dece','pflux','pfluxe','freq']
         if not iflux:
-            continue
+            pass
         else:
             self.keys.append('iflux')
             self.keys.append('ifluxe')

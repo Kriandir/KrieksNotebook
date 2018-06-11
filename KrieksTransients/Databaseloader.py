@@ -7,19 +7,20 @@ class datawrapp(object):
 
         self.radec = np.stack((ra,dec),axis = -1)
         self.ra = ra
+	self.name = name
 	if name == "tgss":
             self.rae = rae/3600
         else:
             self.rae = rae
         self.dec = dec
-        if name == "tgss":
+        if self.name == "tgss":
             self.dece = dece/3600
         else:
             self.dece = dece
         self.pflux = pflux
         self.pfluxe = pfluxe
         self.freq = freq
-        self.keys = ['radec','ra','rae','dec','dece','pflux','pfluxe','freq']
+        self.keys = ['name','radec','ra','rae','dec','dece','pflux','pfluxe','freq']
 
 # fucntion to call whether to check tgss or vssr
 def ReadData(database):

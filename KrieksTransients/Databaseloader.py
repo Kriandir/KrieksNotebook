@@ -28,12 +28,12 @@ def ReadData(database):
     if database == "tgss":
         data = pd.read_csv("tgsscutout.csv")
         dataset = datawrapp("tgss",np.array(data.RA),np.array(data.e_RA),\
-        np.array(data.DEC),np.array(data.e_DEC),np.array(data.Spk/1000),\
-        np.array(data.e_Spk/1000),147.5)
+        np.array(data.DEC),np.array(data.e_DEC),np.array(data.Spk/1000.),\
+        np.array(data.e_Spk/1000.),147.5)
 
-    if database == "vssr":
+    if database == "vlssr":
         data = pd.read_excel("vssrdataset.xls",sheet_name = "vlssr")
-        dataset = datawrapp("vssr",np.array(data.ra),[],\
-        np.array(data.dec),[],np.array(data.flux_74_mhz),\
-        np.array(data.flux_74_mhz_error),74)
+        dataset = datawrapp("vlssr",np.array(data.ra),[],\
+        np.array(data.dec),[],np.array(data.flux_74_mhz/1000.),\
+        np.array(data.flux_74_mhz_error/1000.),74)
     return dataset

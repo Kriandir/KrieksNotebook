@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import sys,os
 
 # tiny class wrapper around the tgssdata for ease of access
 class datawrapp(object):
@@ -24,16 +25,22 @@ class datawrapp(object):
 
 # fucntion to call whether to check tgss or vssr
 def ReadData(database):
+    path = os.getcwd()
 
     if database == "tgss":
-        data = pd.read_csv("tgsscutout.csv")
-        dataset = datawrapp("tgss",np.array(data.RA),np.array(data.e_RA),\
-        np.array(data.DEC),np.array(data.e_DEC),np.array(data.Spk/1000.),\
-        np.array(data.e_Spk/1000.),147.5)
+        for y in os.listdir(path):
+            if "tgss" in y:
+                data = pd.read_csv(str(y))
+                dataset = datawrapp("tgss",np.array(data.RA),np.array(data.e_RA),\
+                np.array(data.DEC),np.array(data.e_DEC),np.array(data.Spk/1000.),\
+                np.array(data.e_Spk/1000.),147.5)
 
     if database == "vlssr":
-        data = pd.read_excel("vssrdataset.xls",sheet_name = "vlssr")
-        dataset = datawrapp("vlssr",np.array(data.ra),[],\
-        np.array(data.dec),[],np.array(data.flux_74_mhz/1000.),\
-        np.array(data.flux_74_mhz_error/1000.),74)
+        for y in os.listdir(path):
+            if "vlssr" in y:
+                data = pd.read_csv(str(y))
+                data = pd.read_excel("vssrdataset.xls",sheet_name = "vlssr")
+                dataset = datawrapp("vlssr",np.array(data.ra),[],\
+                np.array(data.dec),[],np.array(data.flux_74_mhz/1000.),\
+                np.array(data.flux_74_mhz_error/1000.),74)
     return dataset

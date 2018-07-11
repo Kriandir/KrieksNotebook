@@ -30,7 +30,10 @@ def ReadData(database):
     if database == "tgss":
         for y in os.listdir(path):
             if "tgss" in y:
-                data = pd.read_csv(str(y))
+		if "csv" in y:
+                    data = pd.read_csv(str(y))
+		if "xls" in y:
+		    data = pd.read_excel(str(y),sheet_name = "tgss") 
                 dataset = datawrapp("tgss",np.array(data.RA),np.array(data.e_RA),\
                 np.array(data.DEC),np.array(data.e_DEC),np.array(data.Spk/1000.),\
                 np.array(data.e_Spk/1000.),147.5)
@@ -38,8 +41,11 @@ def ReadData(database):
     if database == "vlssr":
         for y in os.listdir(path):
             if "vlssr" in y:
-                data = pd.read_csv(str(y))
-                data = pd.read_excel("vssrdataset.xls",sheet_name = "vlssr")
+		print y
+		if "csv" in y:	
+                    data = pd.read_csv(str(y))
+		if "xls" in y:
+                    data = pd.read_excel(str(y),sheet_name = "vlssr")
                 dataset = datawrapp("vlssr",np.array(data.ra),[],\
                 np.array(data.dec),[],np.array(data.flux_74_mhz/1000.),\
                 np.array(data.flux_74_mhz_error/1000.),74)

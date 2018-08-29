@@ -1,0 +1,62 @@
+#
+#   VizieR Astronomical Server vizier.u-strasbg.fr
+#    Date: 2018-08-29T14:38:43 [V1.99+ (14-Oct-2013)]
+#   In case of problem, please report to:	cds-question@unistra.fr
+#
+#
+#Coosys	J2000:	eq_FK5 J2000
+#INFO	votable-version=1.99+ (14-Oct-2013)	
+#INFO	-ref=VIZ5b8696593980	
+#INFO	-out.max=50	
+#INFO	queryParameters=10	
+#-oc.form=dec
+#-out.max=50
+#-order=I
+#-nav=cat:VIII/85A&tab:{VIII/85A/spectra}&key:source=VIII/85A/spectra&HTTPPRM:&&-ref=VIZ5b8696593980&-out.max=50&-out.form=HTML Table&-order=I&-oc.form=dec&-c.eq=J2000&-c.r=  2&-c.u=arcmin&-c.geom=r&Seq=  50608&-meta.ucd=2&-meta=1&-meta.foot=1&-usenav=1&-bmark=POST&
+#-c.eq=J2000
+#-c.r=  2
+#-c.u=arcmin
+#-c.geom=r
+#-source=VIII/85A/spectra
+#Seq=  50608
+#
+
+#RESOURCE=yCat_8085
+#Name: VIII/85A
+#Title: SPECFIND V2.0 Catalog of radio continuum spectra (Vollmer+ 2009)
+#Table	VIII_85A_spectra:
+#Name: VIII/85A/spectra
+#Title: The parameters of the radio spectra
+#Column	Seq	(I6)	[1,107498] Sequential number of the spectrum (1)	[ucd=meta.record]
+#Column	n_Seq	(I1)	VizieR added column, not part of original data	[ucd=meta.note]
+#Column	Name	(a31)	Main name of the radio source (G1)	[ucd=meta.id;meta.main]
+#Column	N	(I2)	[2,31] Number of points in spectrum	[ucd=meta.number]
+#Column	a	(F6.2)	Slope of spectrum (3)	[ucd=arith.grad;spect.index]
+#Column	b	(F6.2)	Abscissa of spectrum (3)	[ucd=stat.fit;arith.zp]
+#Column	nu	(I5)	[30,15000] Frequency	[ucd=em.freq]
+#Column	S(nu)	(E9.2)	Flux density at frequency nu	[ucd=phot.flux.density;em.radio]
+#Column	e_S(nu)	(E8.1)	Mean error on S(nu)	[ucd=stat.error]
+#Column	RAJ2000	(F8.4)	Right ascension (J2000) of source	[ucd=pos.eq.ra;meta.main]
+#Column	DEJ2000	(F8.4)	Declination (J2000) of source	[ucd=pos.eq.dec;meta.main]
+#Column	zSim	(A4)	Display the Object type and redshift form Simbad	[ucd=meta.ref.url]
+#Column	SED	(A3)	VizieR added column, not part of original data	[ucd=meta.ref.url]
+#Column	Radio+Opt	(a9)	Get an optical image, with an overplot of radio contours	[ucd=meta.ref.url]
+#Column	beam	(F9.2)	Size of beam (0 if unknown)	[ucd=phys.angSize;instr.beam]
+Seq;n_Seq;Name;N;a;b;nu;S(nu);e_S(nu);RAJ2000;DEJ2000;zSim;SED;Radio+Opt;beam
+ ; ; ; ; ;[mJy];MHz;mJy;mJy;deg;deg; ; ; ;arcsec
+------;-;-------------------------------;--;------;------;-----;---------;--------;--------;--------;----;---;---------;---------
+ 50608;0;GB6 B1220+5043                 ;14; -1.16;  6.26; 4850; 7.60e+01; 1.5e+01;185.7117;+50.4492;zSim;SED;Radio+Opt;   108.00
+ 50608;0;87GB 122025.7+504330           ;14; -1.16;  6.26; 4850; 6.70e+01; 1.3e+01;185.7158;+50.4481;zSim;SED;Radio+Opt;   138.00
+ 50608;0;BWE 1220+5043                  ;14; -1.16;  6.26; 4850; 6.40e+01; 1.3e+01;185.7183;+50.4472;zSim;SED;Radio+Opt;   138.00
+ 50608;0;4C +50.34                      ;14; -1.16;  6.26;  178; 4.40e+03; 1.3e+03;185.7208;+50.4467;zSim;SED;Radio+Opt;   690.00
+ 50608;0;TXS 1220+507                   ;14; -1.16;  6.26;  365; 2.29e+03; 4.6e+02;185.7163;+50.4486;zSim;SED;Radio+Opt;     6.00
+ 50608;0;WN B1220.4+5043                ;14; -1.11;  6.14;  325; 2.57e+03; 5.1e+02;185.7162;+50.4486;zSim;SED;Radio+Opt;    12.00
+ 50608;0;FIRST J122251.9+502655         ;14; -1.11;  6.13; 1400; 4.50e+02; 9.0e+01;185.7163;+50.4487;zSim;SED;Radio+Opt;     5.00
+ 50608;0;NVSS J122251+502655            ;14; -1.11;  6.14; 1400; 4.47e+02; 8.9e+01;185.7163;+50.4488;zSim;SED;Radio+Opt;    45.00
+ 50608;0;MY 122025.7+502701.2           ;14; -1.16;  6.26;  232; 4.34e+03; 8.7e+02;185.7158;+50.4503;zSim;SED;Radio+Opt;   150.00
+ 50608;0;WB 1220+5043                   ;14; -1.23;  6.41; 1400; 4.01e+02; 8.0e+01;185.7183;+50.4472;zSim;SED;Radio+Opt;   120.00
+ 50608;0;6C 122026+504332               ;14; -1.11;  6.14;  151; 5.53e+03; 1.1e+03;185.7171;+50.4483;zSim;SED;Radio+Opt;   252.00
+ 50608;0;6C 122025+504330               ;14; -1.16;  6.26;  151; 5.19e+03; 1.0e+03;185.7163;+50.4478;zSim;SED;Radio+Opt;   252.00
+ 50608;0;7C 122025.80+504334.00         ;14; -1.16;  6.26;  151; 5.29e+03; 1.1e+03;185.7163;+50.4489;zSim;SED;Radio+Opt;    70.20
+ 50608;0;VLSS J1222.8+5026              ;14; -1.16;  6.26;   74; 1.03e+04; 2.1e+03;185.7167;+50.4481;zSim;SED;Radio+Opt;    79.98
+

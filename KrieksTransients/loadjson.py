@@ -1,6 +1,12 @@
 import json
-jsonFile = open("neat.json", "r")
-data = json.load(jsonFile)
-for i in data:
-    if i['id'] == str(15302):
-        print i
+import pandas as pd
+
+def Loadin():
+    jsonFile = open("neat.json", "r")
+    data = json.load(jsonFile)
+    df = pd.DataFrame(data)
+    return df
+
+if __name__ == '__main__':
+    x = Loadin()
+    print x['id']

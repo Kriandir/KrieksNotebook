@@ -1,4 +1,6 @@
 import json
-jsonFile = open("data.json", "r")
+jsonFile = open("neat.json", "r")
 data = json.load(jsonFile)
-print data[1]['id']
+for i in data:
+    if i['id'] == str(15302):
+        print i

@@ -2,6 +2,10 @@ import json
 
 
 def WriteFluxJson(sources):
+    try:
+        os.remove('fluxvar.json')
+    except:
+        pass
     sourcelist = []
     for i in sources:
         if i.ra < 0:

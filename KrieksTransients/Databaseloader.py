@@ -11,11 +11,15 @@ class datawrapp(object):
 	self.name = name
 	if name == "tgss":
             self.rae = rae/3600
+        elif name == 'vlssr':
+            self.rae = np.full(np.shape(ra),0.00333333)
         else:
             self.rae = rae
         self.dec = dec
         if self.name == "tgss":
             self.dece = dece/3600
+        elif name == 'vlssr':
+            self.dece = np.full(np.shape(dec),0.00333333)
         else:
             self.dece = dece
         self.pflux = pflux
@@ -36,8 +40,10 @@ def ReadData(database):
 		if "xls" in y:
 		    data = pd.read_excel(str(y),sheet_name = "tgss") 
                 dataset = datawrapp("tgss",np.array(data.RA),np.array(data.e_RA),\
-                np.array(data.DEC),np.array(data.e_DEC),np.array(data.Spk/1000.),\
-                np.array(data.e_Spk/1000.),147.5)
+                np.array(data.DEC),np.array(data.e_DEC),\
+ #               np.array(data.Spk/1000.),np.array(data.e_Spk/1000.)\
+                np.array(data.Sint/1000.),np.array(data.e_Sint/1000.)\
+                ,147.5)
                 datalist.append(dataset)
 
     if database == "vlssr":

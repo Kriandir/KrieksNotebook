@@ -9,38 +9,17 @@ class QuotesSpider(scrapy.Spider):
 
 
     def start_requests(self):
-
+        # opens json file and pops first entry
         jsonFile = open("tgpos.json","r+")
         datalist = json.load(jsonFile)
-        # print len(datalist)
-        print datalist
         entry = datalist.pop(0)
-        # print entry
-        print datalist
         jsonFile.seek(0)  # rewind
         json.dump(datalist, jsonFile)
         jsonFile.truncate()
-        # # jsonFile.close()
-        # # print len(datalist)
-        # # print datalist
-        # with open("tgspos.json","w") as outfile:
-        #     print datalist
-        #     json.dump(datalist,outfile)
-        # for entry in datalist:
+
+        # runs the scraper
         yield scrapy.Request(url=entry['url'], callback=self.next,meta={'id':entry['id'],'pos':entry['pos']})
 
-        # jsonFile = open("fluxvar.json",'r')
-        # datalist = json.load(jsonFile)
-
-
-
-
-
-
-
-        # for i in self.sourcevarlist:
-        #     if i['id'] ==str(15302):
-        #         print i
 
     def next(self,response):
         hsize = "0.5"
@@ -54,10 +33,9 @@ class QuotesSpider(scrapy.Spider):
     def parse(self, response):
         rows = response.css("table.results tr")[1:]
         data = rows[0].css('td::text').extract()[-2]
-
+        positions = response.meta['pos'].split(" ")
         yield {
-            'field': data,
+            'url': "https://vo.astron.nl/getproduct/tgssadr/fits/" + str(data)+".MOSAIC.FITS?sdec=0.5&dec="+positions[0]+"&ra="+positions[1]+"&sra=0.702221502732",
             'id':response.meta['id'],
-            'pos':response.meta['pos']
 
         }

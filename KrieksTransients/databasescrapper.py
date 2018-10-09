@@ -35,7 +35,7 @@ class QuotesSpider(scrapy.Spider):
         data = rows[0].css('td::text').extract()[-2]
         positions = response.meta['pos'].split(" ")
         yield {
-            'url': "https://vo.astron.nl/getproduct/tgssadr/fits/" + str(data)+".MOSAIC.FITS?sdec=0.5&dec="+positions[0]+"&ra="+positions[1]+"&sra=0.702221502732",
+            'url': "https://vo.astron.nl/getproduct/tgssadr/fits/" + str(data)+".MOSAIC.FITS?sdec=0.5\&dec="+positions[1]+"\&ra="+positions[0]+"\&sra=0.702221502732",
             'id':response.meta['id'],
 
         }

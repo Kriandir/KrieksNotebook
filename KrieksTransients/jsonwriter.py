@@ -29,7 +29,7 @@ def WriteFluxJson(sources,pos = False):
             	    ra = "%0.4f" % i.ra
             	    dec = "%0.4f" %i.dec
                     pos = ra + " " + dec
-                    data = {'url':"https://vo.astron.nl/tgssadr/q_fits/cutout/form",'id':str(i.id),'pos':pos}
+                    data = {'url':"https://vo.astron.nl/tgssadr/q_fits/cutout/form",'id':str(i.id),'pos':pos,'name':i.dataname}
                     sourcelist.append(data)
 
     with open(name + '.json','w') as outfile:

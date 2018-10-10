@@ -14,4 +14,5 @@ for line in s.readlines():
         continue
 
 for i in datalist:
+    print i
     os.system("wget -O "+ i['id']+i['name']+".fits "+i['url'])

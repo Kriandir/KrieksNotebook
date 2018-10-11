@@ -15,7 +15,7 @@ def GetCutout(imagefile,ra,dec,id):
     image_data = hdu_list[0].data
 
     # GET LOCATION OF SOURCE
-    size = u.Quantity((80, 80), u.pixel)
+    size = u.Quantity((120, 120), u.pixel)
     c = SkyCoord(ra, dec, frame='fk5', unit='deg')
 
 
@@ -36,7 +36,9 @@ def GetCutout(imagefile,ra,dec,id):
 
 
     # GET CUTOUT AND PLOT IT
+    plt.figure(figsize = (10,10))
     cutout1 = Cutout2D(image_data, c,size,wcs=wcs)
     plt.imshow(cutout1.data, origin='lower')
+    plt.colorbar()
     plt.savefig(str(id)+"cutout"+".png")
     plt.show()

@@ -14,7 +14,8 @@ def Imager(imagefile):
     hdu_list.close()
 
     # plot and save the data
+    plt.figure(figsize=(10,10))
     plt.imshow(image_data, origin='lower')
     plt.colorbar()
-    plt.savefig(imagefile -".fits"+".png")
+    plt.savefig(imagefile.replace(".fits",".png"))
     plt.show()

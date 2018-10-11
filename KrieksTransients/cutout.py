@@ -38,5 +38,5 @@ def GetCutout(imagefile,ra,dec,id):
     # GET CUTOUT AND PLOT IT
     cutout1 = Cutout2D(image_data, c,size,wcs=wcs)
     plt.imshow(cutout1.data, origin='lower')
-    plt.savefig(str(id)+".png")
+    plt.savefig(str(id)+"cutout"+".png")
     plt.show()

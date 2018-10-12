@@ -15,7 +15,6 @@ def Imager(imagefile,ra,dec):
     w = WCS(hdu_list[0].header)
     size = u.Quantity((120, 120), u.pixel)
     c = SkyCoord(ra, dec, frame='fk5', unit='deg')
-
     # RESHAPE DATA FOR PROPER FORMAT
     shape = (image_data.shape)
     image_data = np.reshape(image_data,(shape[2],shape[3]))
@@ -30,9 +29,15 @@ def Imager(imagefile,ra,dec):
     wcss.wcs.cdelt = [w.wcs.cdelt[0],w.wcs.cdelt[1]]
 
     # plot and save the data
-    plt.figure(figsize=(10,10))
-    cutout1 = Cutout2D(image_data, c,size,wcs=wcss)
-    plt.imshow(cutout1.data, origin='lower')
+    try:
+        plt.figure(figsize=(10,10))
+        cutout1 = Cutout2D(image_data, c,size,wcs=wcss)
+        plt.imshow(cutout1.data, origin='lower')
+    except:
+        # plot and save the data
+        print 'failed centering'
+        plt.figure(figsize=(10,10))
+        plt.imshow(image_data, origin='lower')
     plt.colorbar()
     plt.savefig(imagefile.replace(".fits",".png"))
     plt.show()

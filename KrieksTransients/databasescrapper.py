@@ -22,7 +22,7 @@ class QuotesSpider(scrapy.Spider):
 
 
     def next(self,response):
-        hsize = "5.0"
+        hsize = "0.25"
         hpos = response.meta['pos']
         yield scrapy.FormRequest.from_response(
             response,
@@ -36,7 +36,7 @@ class QuotesSpider(scrapy.Spider):
         positions = response.meta['pos'].split(" ")
 
         yield {
-            'url': "https://vo.astron.nl/getproduct/tgssadr/fits/" + str(data)+".MOSAIC.FITS?sdec=5.0\&dec="+positions[1]+"\&ra="+positions[0]+"\&sra=7.85219277226",
+            'url': "https://vo.astron.nl/getproduct/tgssadr/fits/" + str(data)+".MOSAIC.FITS?sdec=0.25\&dec="+positions[1]+"\&ra="+positions[0]+"\&sra=0.389864794547",
             'id':response.meta['id'],
             'name':response.meta['name']
 

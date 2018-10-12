@@ -13,7 +13,7 @@ def GetCutout(imagefile,ra,dec,id):
     hdu_list = fits.open(imagefile)
 
     image_data = hdu_list[0].data
-    w= WCS(hdulist[0].header)
+    w= WCS(hdu_list[0].header)
 
     # GET LOCATION OF SOURCE
     size = u.Quantity((120, 120), u.pixel)
@@ -23,7 +23,6 @@ def GetCutout(imagefile,ra,dec,id):
     # DEFINE WCS COORDINATE SYSTEM
     wcss = WCS(naxis=2)
     wcss.wcs.ctype = ['RA---SIN','DEC--SIN']
-
     wcss.wcs.crval = [w.wcs.crval[0],w.wcs.crval[1]]
     wcss.wcs.crpix = [ w.wcs.crpix[0],w.wcs.crpix[1]]
     wcss.wcs.cdelt = [w.wcs.cdelt[0],w.wcs.cdelt[1]]

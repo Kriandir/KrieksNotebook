@@ -9,11 +9,12 @@ from astropy.wcs import WCS
 
 imagefile = "../IMAGES/December/26_8192_4asec_all_1hr/1hr_allband_autothresh-t0004-image-pb.fits"
 
-def GetCutout(imagefile,ra,dec,id):
+def GetCutout(imagefile,ra,dec,id,database = 'own'):
     hdu_list = fits.open(imagefile)
 
     image_data = hdu_list[0].data
     w= WCS(hdu_list[0].header)
+
 
     # GET LOCATION OF SOURCE
     size = u.Quantity((120, 120), u.pixel)
@@ -25,13 +26,17 @@ def GetCutout(imagefile,ra,dec,id):
     wcss.wcs.ctype = ['RA---SIN','DEC--SIN']
     wcss.wcs.crval = [w.wcs.crval[0],w.wcs.crval[1]]
     wcss.wcs.crpix = [ w.wcs.crpix[0],w.wcs.crpix[1]]
-    wcss.wcs.cdelt = [w.wcs.cdelt[0],w.wcs.cdelt[1]]
 
+    if database =='own':
+        wcss.wcs.cdelt = [w.wcs.cdelt[0],w.wcs.cdelt[1]]
+        # RESHAPE DATA IN PROPER IMAGE FORMAT
+        shape = (image_data.shape)
+        image_data = image_data.reshape((shape[2],shape[3]))
+    elif database = 'tgss':
+        wcss.wcs.cd = [w.wcs.cd[0],w.wcs.cd[1]]
     hdu_list.close()
 
-    # RESHAPE DATA IN PROPER IMAGE FORMAT
-    shape = (image_data.shape)
-    image_data = image_data.reshape((shape[2],shape[3]))
+
 
 
 
@@ -40,5 +45,5 @@ def GetCutout(imagefile,ra,dec,id):
     cutout1 = Cutout2D(image_data, c,size,wcs=wcss)
     plt.imshow(cutout1.data, origin='lower')
     plt.colorbar()
-    plt.savefig(str(id)+"cutout"+".png")
+    plt.savefig(str(id)+"cutout_"+database+".png")
     plt.show()

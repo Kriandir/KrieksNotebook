@@ -32,7 +32,7 @@ def GetCutout(imagefile,ra,dec,id,database = 'own'):
         # RESHAPE DATA IN PROPER IMAGE FORMAT
         shape = (image_data.shape)
         image_data = image_data.reshape((shape[2],shape[3]))
-    elif database = 'tgss':
+    elif database == 'tgss':
         wcss.wcs.cd = [w.wcs.cd[0],w.wcs.cd[1]]
     hdu_list.close()
 

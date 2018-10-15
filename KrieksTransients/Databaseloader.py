@@ -33,29 +33,37 @@ def ReadData(database):
     datalist = []
 
     if database == "tgss":
+        truefile = False
         for y in os.listdir(path):
             if "tgss" in y:
 		if "csv" in y:
                     data = pd.read_csv(str(y))
-		if "xls" in y:
-		    data = pd.read_excel(str(y),sheet_name = "tgss") 
-                dataset = datawrapp("tgss",np.array(data.RA),np.array(data.e_RA),\
-                np.array(data.DEC),np.array(data.e_DEC),\
- #               np.array(data.Spk/1000.),np.array(data.e_Spk/1000.)\
-                np.array(data.Sint/1000.),np.array(data.e_Sint/1000.)\
-                ,147.5)
-                datalist.append(dataset)
+                    truefile = True
+		elif "xls" in y:
+		    data = pd.read_excel(str(y),sheet_name = "tgss")
+                    truefile = True
+                if truefile: 
+                    dataset = datawrapp("tgss",np.array(data.RA),np.array(data.e_RA),\
+                    np.array(data.DEC),np.array(data.e_DEC),\
+ #                  np.array(data.Spk/1000.),np.array(data.e_Spk/1000.)\
+                    np.array(data.Sint/1000.),np.array(data.e_Sint/1000.)\
+                    ,147.5)
+                    datalist.append(dataset)
 
     if database == "vlssr":
+        truefile = False
         for y in os.listdir(path):
             if "vlssr" in y:
 		print y
 		if "csv" in y:	
                     data = pd.read_csv(str(y))
+                    truefile = True
 		if "xls" in y:
                     data = pd.read_excel(str(y),sheet_name = "vlssr")
-                dataset = datawrapp("vlssr",np.array(data.ra),[],\
-                np.array(data.dec),[],np.array(data.flux_74_mhz/1000.),\
-                np.array(data.flux_74_mhz_error/1000.),74)
-                datalist.append(dataset)
+                    truefile = True
+                if truefile:
+                    dataset = datawrapp("vlssr",np.array(data.ra),[],\
+                    np.array(data.dec),[],np.array(data.flux_74_mhz/1000.),\
+                    np.array(data.flux_74_mhz_error/1000.),74)
+                    datalist.append(dataset)
     return datalist

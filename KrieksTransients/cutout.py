@@ -27,7 +27,7 @@ def GetCutout(imagefile,ra,dec,id,database = 'own'):
     wcss.wcs.crval = [w.wcs.crval[0],w.wcs.crval[1]]
     wcss.wcs.crpix = [ w.wcs.crpix[0],w.wcs.crpix[1]]
 
-    if database =='own':
+    if database =='own' or database =='vlssr':
         wcss.wcs.cdelt = [w.wcs.cdelt[0],w.wcs.cdelt[1]]
         # RESHAPE DATA IN PROPER IMAGE FORMAT
         shape = (image_data.shape)

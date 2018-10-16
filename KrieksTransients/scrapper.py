@@ -25,48 +25,49 @@ class QuotesSpider(scrapy.Spider):
         meta={'id':response.meta['id']})
 
     def parse(self, response):
-        rows = response.css("table.sort tr")[1:]
-        # nu = []
-        # s_nu = []
-        # e = []
-        for row in rows:
-            data = row.css('td::text').extract()[4:7]
-            # nu.append(data[0])
-            # s_nu.append(data[1])
-            # e.append(data[2])
-            nu = data[0]
-            s_nu = data[1]
-            e = data[2]
+        try:
+            rows = response.css("table.sort tr")[1:]
+            # nu = []
+            # s_nu = []
+            # e = []
+            for row in rows:
+                data = row.css('td::text').extract()[4:7]
+                # nu.append(data[0])
+                # s_nu.append(data[1])
+                # e.append(data[2])
+                nu = data[0]
+                s_nu = data[1]
+                e = data[2]
 
-        # sourcedict = {
-        #     'nu':nu,
-        #     's_nu':s_nu,
-        #     'e':e,
-        #     'id':response.meta['id']
-        #
-        #
-        # }
-        # with open('dict.csv', 'w') as f:
-        #     [f.write('{0},{1}\n'.format(key, value)) for key, value in sourcedict.items()]
-        # if response.meta['id'] == str(10500):
-        #     print '-##########-'
-        #     print sourcedict
-        #     print '--#########--'
-            if nu is not None:
-                yield {
-                    'nu': nu,
-                    's_nu': s_nu,
-                    'e': e,
-                    'id':response.meta['id']
-                }
-            else:
-                print "empty"
-                yield {
-                    'nu': [],
-                    's_nu': [],
-                    'e': [],
-                    'id':response.meta['id']
-                }
+            # sourcedict = {
+            #     'nu':nu,
+            #     's_nu':s_nu,
+            #     'e':e,
+            #     'id':response.meta['id']
+            #
+            #
+            # }
+            # with open('dict.csv', 'w') as f:
+            #     [f.write('{0},{1}\n'.format(key, value)) for key, value in sourcedict.items()]
+            # if response.meta['id'] == str(10500):
+            #     print '-##########-'
+            #     print sourcedict
+            #     print '--#########--'
+
+            yield {
+                'nu': nu,
+                's_nu': s_nu,
+                'e': e,
+                'id':response.meta['id']
+            }
+        except:
+            print "empty"
+            yield {
+                'nu': [],
+                's_nu': [],
+                'e': [],
+                'id':response.meta['id']
+            }
         # sourcedict ={
         # 'id':self.ids,
         # 'nu':nu,

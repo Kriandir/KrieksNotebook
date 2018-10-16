@@ -54,14 +54,13 @@ class QuotesSpider(scrapy.Spider):
             #     print sourcedict
             #     print '--#########--'
 
-            yield {
-                'nu': nu,
-                's_nu': s_nu,
-                'e': e,
-                'id':response.meta['id']
-            }
+                yield {
+                    'nu': nu,
+                    's_nu': s_nu,
+                    'e': e,
+                    'id':response.meta['id']
+                }
         except:
-            print "empty"
             yield {
                 'nu': [],
                 's_nu': [],

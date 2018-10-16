@@ -52,13 +52,19 @@ class QuotesSpider(scrapy.Spider):
         #     print '-##########-'
         #     print sourcedict
         #     print '--#########--'
-            yield {
-                'nu': nu,
-                's_nu': s_nu,
-                'e': e,
-                'id':response.meta['id']
-            }
-
+            if nu is not None:
+                yield {
+                    'nu': nu,
+                    's_nu': s_nu,
+                    'e': e,
+                    'id':response.meta['id']
+                }
+            else:
+                yield {
+                    'nu': nu,
+                    's_nu': s_nu,
+                    'e': e,
+                    'id':response.meta['id']
         # sourcedict ={
         # 'id':self.ids,
         # 'nu':nu,

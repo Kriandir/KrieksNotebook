@@ -60,10 +60,11 @@ class QuotesSpider(scrapy.Spider):
                     'id':response.meta['id']
                 }
             else:
+                print "empty"
                 yield {
-                    'nu': nu,
-                    's_nu': s_nu,
-                    'e': e,
+                    'nu': [],
+                    's_nu': [],
+                    'e': [],
                     'id':response.meta['id']
                 }
         # sourcedict ={

@@ -65,6 +65,7 @@ class QuotesSpider(scrapy.Spider):
                     's_nu': s_nu,
                     'e': e,
                     'id':response.meta['id']
+                }
         # sourcedict ={
         # 'id':self.ids,
         # 'nu':nu,

@@ -25,11 +25,12 @@ class QuotesSpider(scrapy.Spider):
         meta={'id':response.meta['id']})
 
     def parse(self, response):
-        try:
-            rows = response.css("table.sort tr")[1:]
-            # nu = []
-            # s_nu = []
-            # e = []
+
+        rows = response.css("table.sort tr")[1:]
+        # nu = []
+        # s_nu = []
+        # e = []
+        if rows:
             for row in rows:
                 data = row.css('td::text').extract()[4:7]
                 # nu.append(data[0])
@@ -60,7 +61,7 @@ class QuotesSpider(scrapy.Spider):
                     'e': e,
                     'id':response.meta['id']
                 }
-        except:
+        else:
             yield {
                 'nu': [],
                 's_nu': [],

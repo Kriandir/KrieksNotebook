@@ -1,3 +1,7 @@
+#Script for writing json files either fluxvar or tgspos mandatory for the scraper tool
+# (for more info email kriekvdmeulen@gmail.com)
+
+#TODO
 import json
 
 

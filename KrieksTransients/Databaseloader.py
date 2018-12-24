@@ -1,3 +1,6 @@
+#loading in predownloaded tgss or vlssr databases (formats accepted: csv,xls)
+# (for more info email kriekvdmeulen@gmail.com)
+
 import numpy as np
 import pandas as pd
 import sys,os

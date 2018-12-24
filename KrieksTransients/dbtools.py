@@ -1,3 +1,6 @@
+#Tool which automatically outputs pandas dataframe based on users input table
+# (for more info email kriekvdmeulen@gmail.com)
+
 import tkp.db
 from tkp.db.model import Varmetric
 from tkp.db.model import Runningcatalog

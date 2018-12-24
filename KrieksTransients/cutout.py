@@ -36,6 +36,9 @@ def GetCutout(imagefile,ra,dec,id,database = 'own'):
             size = u.Quantity((60,60),u.pixel)
     elif database == 'tgss':
         wcss.wcs.cd = [w.wcs.cd[0],w.wcs.cd[1]]
+    print wcss
+    print size
+    print w
     hdu_list.close()
 
 

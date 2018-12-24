@@ -3,7 +3,7 @@ import os,sys
 import wget
 import json
 
-
+# Downloads fits files from scraped sites.
 datalist = []
 s = open('poslink.json', 'r')
 for line in s.readlines():

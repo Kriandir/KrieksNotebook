@@ -1,3 +1,6 @@
+# Calculates frequency dependency of LOFAR using only calibrator 3C 196 (most likely only relevant for this thesis pointing)
+# (for more info email kriekvdmeulen@gmail.com)
+
 import numpy as np
 import math
 import matplotlib.pyplot as plt
@@ -6,9 +9,6 @@ import matplotlib.pyplot as plt
 def Function(A0,err0,A1,err1,A2,err2,freq):
     return A0*np.power(10,(A1*math.log((freq/(150.*1e6)),10)))*np.power(10,(A2*math.log((freq/(150.*1e6)),10)**2))
     # return (np.log(A0)+A1*np.log(freq)+A2*np.power(np.log(freq),2))
-
-
-
 
 
 A0 = 83.084

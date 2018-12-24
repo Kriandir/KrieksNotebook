@@ -1,3 +1,6 @@
+#script that processes input sources into a reg file for opening in ds9 (posvar = green, fluxvar = red)
+# (for more info email kriekvdmeulen@gmail.com)
+
 import numpy as np
 from astropy.coordinates import SkyCoord
 import os,sys

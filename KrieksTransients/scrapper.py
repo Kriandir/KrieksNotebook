@@ -1,6 +1,8 @@
 #scraper for scraping the vizer database
 # (for more info email kriekvdmeulen@gmail.com)
 
+import os
+os.system('pip install scrapy')
 import scrapy
 import json
 import time

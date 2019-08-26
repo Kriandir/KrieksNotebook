@@ -4,8 +4,8 @@
 import json
 import pandas as pd
 
-def Loadin():
-    jsonFile = open("neat.json", "r")
+def Loadin(name):
+    jsonFile = open(name+".json", "r")
     data = json.load(jsonFile)
     df = pd.DataFrame(data)
     return df

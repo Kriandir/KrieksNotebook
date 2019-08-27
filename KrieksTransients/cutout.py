@@ -7,15 +7,11 @@ from astropy.coordinates import SkyCoord
 from astropy.wcs import WCS
 
 
-imagefile = "../IMAGES/December/26_8192_4asec_all_1hr/1hr_allband_autothresh-t0004-image-pb.fits"
-
+imagefile = "/home/zmeyers/notebooks/KrieksNotebook/KrieksTransients/1hr_P10Hetdex_DDbatch2/58tgss.fits"
 def GetCutout(imagefile,ra,dec,id,database = 'own'):
     hdu_list = fits.open(imagefile)
-
     image_data = hdu_list[0].data
     w= WCS(hdu_list[0].header)
-
-
     # GET LOCATION OF SOURCE
     size = u.Quantity((120, 120), u.pixel)
     c = SkyCoord(ra, dec, frame='fk5', unit='deg')
@@ -35,7 +31,10 @@ def GetCutout(imagefile,ra,dec,id,database = 'own'):
         if database == 'vlsrr':
             size = u.Quantity((60,60),u.pixel)
     elif database == 'tgss':
-        wcss.wcs.cd = [w.wcs.cd[0],w.wcs.cd[1]]
+        #wcss.wcs.cd = [w.wcs.cd[0],w.wcs.cd[1]]
+        shape = (image_data.shape)
+        image_data = image_data.reshape((shape[2],shape[3]))
+        wcss.wcs.cdelt=[w.wcs.cdelt[0],w.wcs.cdelt[1]]
     print wcss
     print size
     print w
@@ -52,3 +51,5 @@ def GetCutout(imagefile,ra,dec,id,database = 'own'):
     plt.colorbar()
     plt.savefig(str(id)+"cutout_"+database+".png")
     plt.show()
+
+#GetCutout(imagefile,171.519576947,50.3517960595,58,'tgss')
